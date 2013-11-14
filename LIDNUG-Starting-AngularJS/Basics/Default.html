@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AngularJS Basics</title>
+</head>
+<body ng-app ng-controller="MyCtrl as ctrl">
+
+    {{(1 + 1) * 5}}
+
+    <br />
+
+    {{person.firstName}} {{person.lastName}}
+    <br />
+    <input type="text" ng-model="person.firstName" />
+    <input type="text" ng-model="person.lastName" />
+
+    <ul>
+        <li ng-repeat="p in people">{{p.firstName}} {{p.lastName}}</li>
+    </ul>
+
+    <button ng-click="addPerson()">Add person</button>
+
+    <script src="../Scripts/angular.js"></script>
+
+    <script>
+
+
+        function MyCtrl($scope) {
+            var model = {
+                firstName: 'Maurice',
+                lastName: 'de Beijer'
+            };
+
+            $scope.person = model;
+
+            $scope.people = [
+                {
+                    firstName: 'Maurice',
+                    lastName: 'de Beijer'
+                },
+                {
+                    firstName: 'John',
+                    lastName: 'Doe'
+                }
+            ];
+
+            $scope.addPerson = function () {
+                this.people.push(angular.copy(model));
+            }
+        }
+
+    </script>
+
+</body>
+</html>
